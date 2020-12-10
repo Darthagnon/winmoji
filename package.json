@@ -16,18 +16,15 @@
     "dev": "yarn && yarn compile && electron main.js",
     "pack": "yarn compile && build --dir",
     "build:win": "electron-builder --win",
-    "release": "rm -rf dist && yarn compile && electron-builder build --win --publish always"
+    "release": "rmdir dist && yarn compile && electron-builder build --win --publish always"
   },
   "dependencies": {
     "electron-is-dev": "^1.2.0",
     "electron-localshortcut": "^3.0.4",
     "electron-store": "^6.0.1",
-    "electron-updater": "^4.3.4",
     "fast-levenshtein": "^2.0.6",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "universal-analytics": "^0.4.23",
-    "uuid": "^8.3.1",
     "v8-compile-cache": "^2.2.0",
     "winmojilib": "^0.3.1"
   },
@@ -98,17 +95,9 @@
     "win": {
       "target": [
         {
-          "target": "portable",
-          "arch": [
-            "x64",
-            "ia32"
-          ]
-        },
-        {
           "target": "nsis",
           "arch": [
-            "x64",
-            "ia32"
+			"ia32"
           ]
         }
       ],

@@ -2,8 +2,6 @@ const { app, BrowserWindow, globalShortcut } = require('electron');
 const isDev = require('electron-is-dev');
 const path = require('path');
 const tray = require('./tray');
-const updater = require('./updater');
-const { activateUser } = require('./app/helpers/analytics');
 const store = require('./app/store');
 
 require('v8-compile-cache');
@@ -78,9 +76,6 @@ if (!lockSingleInstance) {
 
   app.on('ready', () => {
     createWindow();
-    if (!isDev) {
-      updater.checkForUpdates();
-    }
   });
 
   app.on('activate', () => {
@@ -91,6 +86,4 @@ if (!lockSingleInstance) {
   app.on('before-quit', () => {
     isQuitting = true;
   });
-
-  activateUser();
 }
